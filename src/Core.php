@@ -10,6 +10,12 @@ namespace SlickPay;
 class Core
 {
     /**
+     * Sent on every request. The production API is fronted by a WAF that
+     * rejects requests without a User-Agent header with an empty 403.
+     */
+    const USER_AGENT = 'slickpay-laravel';
+
+    /**
      * Calculate commission.
      *
      * @param  string $url  API URL
@@ -34,6 +40,7 @@ class Core
                 "Authorization: Bearer {$public_key}",
             ));
             curl_setopt($cURL, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cURL, CURLOPT_USERAGENT, self::USER_AGENT);
             curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
@@ -85,6 +92,7 @@ class Core
             "Authorization: Bearer {$public_key}",
         ]);
         curl_setopt($cURL, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($cURL, CURLOPT_USERAGENT, self::USER_AGENT);
         curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
         curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
@@ -131,6 +139,7 @@ class Core
                 "Authorization: Bearer {$public_key}",
             ));
             curl_setopt($cURL, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cURL, CURLOPT_USERAGENT, self::USER_AGENT);
             curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
@@ -186,6 +195,7 @@ class Core
                 "Authorization: Bearer {$public_key}",
             ));
             curl_setopt($cURL, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cURL, CURLOPT_USERAGENT, self::USER_AGENT);
             curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
@@ -239,6 +249,7 @@ class Core
                 "Authorization: Bearer {$public_key}",
             ));
             curl_setopt($cURL, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cURL, CURLOPT_USERAGENT, self::USER_AGENT);
             curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
@@ -289,6 +300,7 @@ class Core
             ));
             curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, 'DELETE');
             curl_setopt($cURL, CURLOPT_SSL_VERIFYHOST, false);
+            curl_setopt($cURL, CURLOPT_USERAGENT, self::USER_AGENT);
             curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($cURL, CURLOPT_CONNECTTIMEOUT, 3);
             curl_setopt($cURL, CURLOPT_TIMEOUT, 20);
